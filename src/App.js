@@ -1,5 +1,7 @@
 import React from 'react';
 import { Router } from '@reach/router';
+import { createGlobalStyle } from 'styled-components/macro';
+import { globalCSS } from 'shared/theme';
 import Home from './pages/Home';
 import './App.css';
 import { useStore } from './store';
@@ -7,6 +9,10 @@ import { useStore } from './store';
 import Cms from './components/Cms';
 import Page from './pages/Page';
 import Menu from './components/Menu';
+
+const GlobalStyle = createGlobalStyle`
+  ${globalCSS}
+`;
 
 const createPageRoutes = pages => {
   if (!pages || !pages.length) return null;
@@ -21,6 +27,7 @@ function App() {
 
   return (
     <React.Fragment>
+      <GlobalStyle />
       <Cms>Loading...</Cms>
       <Menu />
       <Router>

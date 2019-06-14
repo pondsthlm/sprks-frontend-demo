@@ -30,6 +30,20 @@ export const theme = {
   title: 'orchid',
 };
 
+export const globalCSS = css`
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`;
+
 export const PreTitle = styled.span`
   color: ${theme.title};
   font-size: 18px;
