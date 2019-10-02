@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from '@reach/router';
 import { createGlobalStyle } from 'styled-components/macro';
-import { globalCSS } from 'shared/theme';
+import { globalCSS } from 'components/theme';
 import Home from './pages/Home';
 import './App.css';
 import { useStore } from './store';

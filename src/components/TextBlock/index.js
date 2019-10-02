@@ -1,8 +1,14 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import styled from 'styled-components/macro';
-import { Title, PreTitle, Highlight, dynamicSize, theme } from 'shared/theme';
-import { blockStyles } from 'shared/theme/';
+import {
+  Title,
+  PreTitle,
+  Highlight,
+  dynamicSize,
+  theme,
+  blockStyles,
+} from 'components/theme';
 //import Quote from 'components/shared/Quote';
 
 const Wrapper = styled.div`

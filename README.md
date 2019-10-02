@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. `cd my_new_repo`
 4. add this repo as a remote `git remote add whitelabel https://github.com/pondsthlm/whitelabel-frontend.git`
 5. fetch latest `git fetch whitelabel`
-6. merge the new repo with this boiler code from the whitelabel remote. `git merge whitelabel/master?`
+6. merge the new repo with this boiler code from the whitelabel remote. `git merge whitelabel/master`
 7. consider removing the remote `git remote remove whitelabel`
 
 ## Cleanup boliercode 
