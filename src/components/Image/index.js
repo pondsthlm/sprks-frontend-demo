@@ -1,58 +1,27 @@
 import React from 'react';
-import styled from 'styled-components/macro';
-import { css } from 'styled-components/macro';
-import imageUrlBuilder from '@sanity/image-url';
+import styled, { css } from 'styled-components/macro';
+import SanityImage, { sanityBackgroundImageCss } from './SanityImage';
 
-import { client } from '../Cms';
-const builder = imageUrlBuilder(client);
-
-const urlFor = source => {
-  return builder.image(source);
-};
-
-const StyledImage = styled.img`
+const StyledImage = styled(SanityImage)`
   width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 `;
 
-const Image = ({ alt, src, className, originalSize }) => {
-  const img = urlFor(src).quality(80);
-
-  if (originalSize) {
-    return <img className={className} src={img.url()} alt={alt} />;
-  }
-
+const Image = ({ alt, src, className, ratio }) => {
   return (
-    <StyledImage
-      className={className}
-      alt={alt}
-      src={img.width(800).url()}
-      srcSet={`
-        ${img.width(1200).url()} 1200w,
-        ${img.width(800).url()} 800w,
-        ${img.width(600).url()} 600w,
-        ${img.width(300).url()} 300w
-      `}
-    />
+    <StyledImage className={className} src={src} alt={alt} ratio={ratio} />
   );
 };
 
-export const backgroundImageCss = (sanityImage, options = {}) => {
-  if (!sanityImage) return null;
-  const img = urlFor(sanityImage)
-    .format('jpg')
-    .quality(80);
-  const hasHotSpot =
-    sanityImage.hotspot && sanityImage.hotspot.x && sanityImage.hotspot.y;
-  const x = hasHotSpot ? sanityImage.hotspot.x : 'center';
-  const y = hasHotSpot ? sanityImage.hotspot.y : 'center';
-  const url = options.blur ? img.width(100).url() : img.width(1200).url();
-  return css`
-    background-image: url(${url});
-    background-size: cover;
-    background-position-x: ${hasHotSpot ? `${x * 100}%` : x};
-    background-position-y: ${hasHotSpot ? `${y * 100}%` : y};
-    ${options.blur ? 'filter: blur(125px) brightness(0.42) opacity(0.9)' : ''}
-  `;
-};
+// const defaultOptions = {
+//   blur: false,
+//   width: 1200,
+// };
+
+export const backgroundImageCss = (src, options = {}) => css`
+  ${p => sanityBackgroundImageCss(src, options)};
+  ${options.blur && 'filter: blur(125px) brightness(0.42) opacity(1)'}
+`;
 
 export default Image;

@@ -5,7 +5,7 @@ import sanityClient from '@sanity/client';
 /*
 Get data from cms API and transform it into  initial state .json
 */
-const clientSettings = {
+export const clientSettings = {
   projectId: 'rq3hxhhx',
   dataset: 'production',
   token: null,
@@ -18,15 +18,14 @@ export const client = sanityClient(clientSettings);
 */
 
 // Page
-const pages = ['_id', 'title', '"slug": slug.current', 'image', 'content'].join(
-  ','
-);
-
-const pagesQuery = `*[_type == "pages"]{${pages}}`;
+const pages = `
+  ...,
+  "slug": slug.current,
+`;
 
 const allQuery = `
   {
-    "pages": ${pagesQuery},
+    "pages": *[_type == "pages"]{${pages}},
   }
   `;
 
@@ -38,11 +37,9 @@ const loadCms = (cmsStatus, actions) => {
         .fetch(allQuery)
         .then(cmsState => {
           actions.fillState(cmsState);
-          console.log('DONE', cmsState);
         })
         .catch(e => {
           actions.setCmsStatus('ERROR');
-          console.error('CMS ERROR', e);
         });
     } catch (e) {
       console.log('e', e);

@@ -39,3 +39,5 @@ compatible with ,redux devtools.
 
 redux devtools  is coming... 
 
+## TODO 
+sync manifest.json to seo component and autogenerate it. 
