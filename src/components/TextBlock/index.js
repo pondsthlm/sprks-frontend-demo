@@ -1,18 +1,11 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import styled from 'styled-components/macro';
-import {
-  Title,
-  PreTitle,
-  Highlight,
-  dynamicSize,
-  theme,
-  blockStyles,
-} from 'components/theme';
+import theme, { blockStyles } from 'theme';
 //import Quote from 'components/shared/Quote';
 
 const Wrapper = styled.div`
-  ${dynamicSize(15, 18)};
+  ${theme.dynamicSize(15, 18)};
   line-height: 1.6;
   text-rendering: geometricPrecision;
   margin-bottom: 30px;

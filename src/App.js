@@ -1,14 +1,14 @@
 import React from 'react';
 import { Router } from '@reach/router';
 import { createGlobalStyle } from 'styled-components/macro';
-import { globalCSS } from 'components/theme';
+import { globalCSS } from 'theme';
 import Home from './pages/Home';
-import './App.css';
 import { useStore } from './store';
 // lacy load page wait for api
-import Cms from './components/Cms';
+import Cms from 'components/Cms';
+import Seo from 'components/Seo';
 import Page from './pages/Page';
-import Menu from './components/Menu';
+import Menu from 'components/Menu';
 
 const GlobalStyle = createGlobalStyle`
   ${globalCSS}
@@ -26,9 +26,10 @@ function App() {
   const { pages } = state;
 
   return (
-    <React.Fragment>
+    <>
       <GlobalStyle />
       <Cms>Loading...</Cms>
+      <Seo />
       <Menu />
       <Router>
         <Home default path="/" />
@@ -39,7 +40,7 @@ function App() {
         <menu>{state.menu_expanded ? 'menu is open' : 'menu is closed'}</menu>
         */}
       </Router>
-    </React.Fragment>
+    </>
   );
 }
 

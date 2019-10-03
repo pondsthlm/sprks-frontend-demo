@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStore } from 'store';
 import styled from 'styled-components/macro';
-
+import Ipsum from 'components/Ipsum';
 import Image, { backgroundImageCss } from 'components/Image';
 import TextBlock from 'components/TextBlock';
 
@@ -37,6 +37,7 @@ const Page = ({ page }) => {
         <h2>{title}</h2>
       </Head>
       <span>page:</span>
+      <Ipsum />
 
       <Images>
         <span>Look at me im not in the center on original image</span>

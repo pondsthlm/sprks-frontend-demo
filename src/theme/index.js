@@ -1,47 +1,19 @@
 // What do we want here ?
 import styled, { css } from 'styled-components';
+import { dynamicSize } from './helpers';
 
-// Smallest supported device ( iphone es ? )
-const minViewport = 320;
-// Original desktop design
-const maxViewport = 1200;
-
-export const dynamicSize = (min, max) => {
-  // Dynamic size based on device width
-  return css`
-    font-size: calc(
-      ${min}px + ${max - min} *
-        ((100vw - ${minViewport}px) / ${maxViewport - minViewport})
-    );
-    @media (min-width: ${maxViewport}px) {
-      font-size: ${max}px;
-    }
-  `;
-};
-
-export const theme = {
+const theme = {
   font: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-  minViewport,
-  maxViewport,
-  dynamicSize,
-
   color: 'black',
   tint: 'navy',
   title: 'orchid',
+
+  // re-export functions
+  dynamicSize,
 };
 
 export const globalCSS = css`
   font-family: Arial, sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: grayscale;
 `;
 
 export const PreTitle = styled.span`
@@ -102,3 +74,5 @@ export const blockStyles = [
   // { title: 'H4', value: 'h4' },
   // { title: 'H5', value: 'h5' },
 ];
+
+export default theme;

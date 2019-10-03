@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'normalize.css'; /* this is a npm package*/
+import './elements.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { ThemeProvider } from 'styled-components';
 import { StoreProvider } from './store';
-import { theme } from 'components/theme';
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <StoreProvider>
-      <App />
-    </StoreProvider>
-  </ThemeProvider>,
+  <StoreProvider>
+    <App />
+  </StoreProvider>,
   document.getElementById('root')
 );
 
