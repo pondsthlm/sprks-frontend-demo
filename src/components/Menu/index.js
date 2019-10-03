@@ -46,6 +46,7 @@ export default ({ page }) => {
       <MenuButton onClick={actions.toggleMenu}>menu</MenuButton>
       <MenuContent expanded={state.menu_expanded}>
         {generateLinkList(pages, actions)}
+        <LinkTo to="/responsive">Responsive</LinkTo>
       </MenuContent>
     </menu>
   );

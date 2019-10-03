@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { minViewport, maxViewport } from './vars';
 
 export const dynamicSize = (min, max) => {
@@ -16,16 +16,33 @@ export const dynamicSize = (min, max) => {
 };
 
 const sizes = {
-  desktop: 992,
-  tablet: 768,
-  phone: 400,
+  desktop: 992, // min-width desktop
+  tablet: 768, // min-width tablet
+  phone: 400, // max-width phone
 };
 
-export const media = Object.keys(sizes).reduce((acc, label) => {
-  acc[label] = (...args) => css`
-    @media (min-width: ${sizes[label]}px) {
+export const media = {
+  desktop: (...args) => css`
+    @media (min-width: ${sizes.desktop}px) {
       ${css(...args)}
     }
-  `;
-  return acc;
-}, {});
+  `,
+  tablet: (...args) => css`
+    @media (min-width: ${sizes.phone}px) {
+      ${css(...args)}
+    }
+  `,
+  tabletOnly: (...args) => css`
+    @media (min-width: ${sizes.phone}px) and (max-width: ${sizes.desktop}px) {
+      ${css(...args)}
+    }
+  `,
+  phone: (...args) => {
+    console.log(...args);
+    return css`
+      @media (max-width: ${sizes.phone}px) {
+        ${css(...args)}
+      }
+    `;
+  },
+};

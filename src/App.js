@@ -2,12 +2,13 @@ import React from 'react';
 import { Router } from '@reach/router';
 import { createGlobalStyle } from 'styled-components/macro';
 import { globalCSS } from 'theme';
-import Home from './pages/Home';
+import Home from 'pages/Home';
+import Responsive from 'pages/Responsive';
 import { useStore } from './store';
 // lacy load page wait for api
 import Cms from 'components/Cms';
 import Seo from 'components/Seo';
-import Page from './pages/Page';
+import Page from 'pages/Page';
 import Menu from 'components/Menu';
 
 const GlobalStyle = createGlobalStyle`
@@ -33,6 +34,7 @@ function App() {
       <Menu />
       <Router>
         <Home default path="/" />
+        <Responsive path="/responsive" />
         {createPageRoutes(pages)}
         {/*
         <p>Hej this is dog</p>
