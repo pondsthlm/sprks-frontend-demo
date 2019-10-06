@@ -1,3 +1,5 @@
+import { css } from 'styled-components/macro';
+
 // Smallest supported device ( iphone es ? )
 const minViewport = 320;
 // Original desktop design
