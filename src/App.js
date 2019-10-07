@@ -15,16 +15,18 @@ const GlobalStyle = createGlobalStyle`
   ${globalCSS}
 `;
 
-const createPageRoutes = (state = {}) => {
-  const pages = (state.cms || {}).pages;
+const createPageRoutes = (pages = {}) => {
   if (!pages || !pages.length) return null;
   return pages.map(p =>
-    p.slug ? <Page path={p.slug.current} page={p} key={p._id} /> : null
+    p.slug && p.slug.current != '/' ? (
+      <Page path={p.slug.current} page={p} key={p._id} />
+    ) : null
   );
 };
 
 function App() {
   const { state } = useStore();
+  const pages = (state.cms || {}).pages;
 
   return (
     <>
@@ -33,14 +35,15 @@ function App() {
       <Seo />
       <Menu />
       <Router>
-        <Home default path="/" />
+        {pages && (
+          <Home
+            default
+            path="/"
+            page={pages.find(p => p.slug.current === '/')}
+          />
+        )}
         <Responsive path="/responsive" />
-        {createPageRoutes(state)}
-        {/*
-        <p>Hej this is dog</p>
-        <button onClick={actions.toggleMenu}>Menu</button>
-        <menu>{state.menu_expanded ? 'menu is open' : 'menu is closed'}</menu>
-        */}
+        {pages && createPageRoutes(pages)}
       </Router>
     </>
   );

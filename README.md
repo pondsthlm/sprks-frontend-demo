@@ -12,8 +12,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 7. consider removing the remote `git remote remove whitelabel`
 
 ## Cleanup boliercode 
-1. Go into package.json and change the "name" from  "ecwhitelabelfontend" to whatever. 
+1. Go into package.json and change the "name" from  "ecwhitelabelfontend" to whatever.
 2. Replace cms sanity paths to correct sanity instance. ( #todo write how )
+3. Update social icons `components/Seo/icons`.
 
 
 # Deploy!
