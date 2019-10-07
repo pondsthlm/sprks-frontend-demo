@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 const createPageRoutes = (pages = {}) => {
   if (!pages || !pages.length) return null;
   return pages.map(p =>
-    p.slug && p.slug.current != '/' ? (
+    p.slug && p.slug.current !== '/' ? (
       <Page path={p.slug.current} page={p} key={p._id} />
     ) : null
   );
