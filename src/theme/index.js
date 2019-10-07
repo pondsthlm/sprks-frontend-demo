@@ -2,6 +2,8 @@
 import styled, { css } from 'styled-components';
 import { dynamicSize } from './helpers';
 
+// Hosting fonts. https://dev.to/kelli/how-to-self-host-google-fonts-on-your-own-server-d4i
+
 const theme = {
   font: "'Helvetica Neue', Helvetica, Arial, sans-serif",
   color: 'black',

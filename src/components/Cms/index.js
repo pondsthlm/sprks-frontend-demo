@@ -17,17 +17,16 @@ export const client = sanityClient(clientSettings);
   create queries for chemas
 */
 
-// Page
-const pages = `
-  ...,
-  "slug": slug.current,
-`;
+// Placholder for preview.
+const previewToken = undefined;
 
-const allQuery = `
-  {
-    "pages": *[_type == "pages"]{${pages}},
+const allQuery = `{
+  "cms": *[_id == "${previewToken !== undefined ? 'drafts.' : ''}webHead"][0]{
+    ...,
+    "pages": pages[]->,
   }
-  `;
+}
+  ` // todo: change id to aboutUs when its created.
 
 const loadCms = (cmsStatus, actions) => {
   if (!cmsStatus) {

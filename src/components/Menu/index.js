@@ -27,10 +27,11 @@ const LinkTo = props => {
   );
 };
 
-const generateLinkList = (pages, actions) => {
+const generateLinkList = (state = {}, actions) => {
+  const pages = (state.cms || {}).pages;
   if (!pages || !pages.length) return null;
   return pages.map(p => (
-    <LinkTo to={`${p.slug}`} onClick={actions.toggleMenu} key={p._id}>
+    <LinkTo to={`${p.slug.current}`} onClick={actions.toggleMenu} key={p._id}>
       {p.title}
     </LinkTo>
   ));
@@ -38,14 +39,13 @@ const generateLinkList = (pages, actions) => {
 
 export default ({ page }) => {
   const { state, actions } = useStore();
-  const { pages } = state;
 
   return (
     <menu>
       <Logo />
       <MenuButton onClick={actions.toggleMenu}>menu</MenuButton>
       <MenuContent expanded={state.menu_expanded}>
-        {generateLinkList(pages, actions)}
+        {generateLinkList(state, actions)}
         <LinkTo to="/responsive">Responsive</LinkTo>
       </MenuContent>
     </menu>

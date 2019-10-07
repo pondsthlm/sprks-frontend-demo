@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStore } from 'store';
+//import { useStore } from 'store';
 import styled from 'styled-components/macro';
 import Ipsum from 'components/Ipsum';
 import Image, { backgroundImageCss } from 'components/Image';
@@ -29,7 +29,7 @@ const ImageSquare = styled(Image)`
 `;
 
 const Page = ({ page }) => {
-  const { state, actions } = useStore();
+  //const { state, actions } = useStore();
   const { title, image, content } = page;
   return (
     <Wrapper>

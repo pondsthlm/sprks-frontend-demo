@@ -15,16 +15,16 @@ const GlobalStyle = createGlobalStyle`
   ${globalCSS}
 `;
 
-const createPageRoutes = pages => {
+const createPageRoutes = (state = {}) => {
+  const pages = (state.cms || {}).pages;
   if (!pages || !pages.length) return null;
   return pages.map(p =>
-    p.slug ? <Page path={p.slug} page={p} key={p._id} /> : null
+    p.slug ? <Page path={p.slug.current} page={p} key={p._id} /> : null
   );
 };
 
 function App() {
   const { state } = useStore();
-  const { pages } = state;
 
   return (
     <>
@@ -35,7 +35,7 @@ function App() {
       <Router>
         <Home default path="/" />
         <Responsive path="/responsive" />
-        {createPageRoutes(pages)}
+        {createPageRoutes(state)}
         {/*
         <p>Hej this is dog</p>
         <button onClick={actions.toggleMenu}>Menu</button>
