@@ -17,8 +17,7 @@ export const dynamicSize = (min, max) => {
 
 const sizes = {
   desktop: 992, // min-width desktop
-  tablet: 768, // min-width tablet
-  phone: 400, // max-width phone
+  phone: 450, // max-width phone
 };
 
 export const media = {
