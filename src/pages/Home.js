@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import Ipsum from 'components/Ipsum';
 import Image, { backgroundImageCss } from 'components/Image';
 import TextBlock from 'components/TextBlock';
+import { Section } from 'components/Layout';
 
 const Images = styled.div`
   padding: 20%;
@@ -11,15 +12,13 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const Head = styled.div`
+const Head = styled(Section)`
   color: #fff;
   height: 50vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-
-  ${p => backgroundImageCss(p.bgImage)}
 `;
 
 const ImageSquare = styled(Image)`
@@ -27,17 +26,25 @@ const ImageSquare = styled(Image)`
   width: auto;
 `;
 
+const SectionDark = styled(Section)`
+  color: #fff;
+  padding: 60px 0;
+`;
+
 const Home = ({ page }) => {
   //const { state, actions } = useStore();
   const { title, image, content } = page;
   return (
     <Wrapper>
-      <Head bgImage={image}>
+      <Head image={image}>
         <h2>{title}</h2>
       </Head>
-      <span>page:</span>
-      <Ipsum />
-
+      <Section color="#eee">
+        <Ipsum />
+      </Section>
+      <SectionDark color="black">
+        <p>this is a dark section </p>
+      </SectionDark>
       <Images>
         <span>Look at me im not in the center on original image</span>
         <br />

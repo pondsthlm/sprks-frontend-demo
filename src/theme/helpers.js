@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { minViewport, maxViewport } from './vars';
+import { minViewport, maxContentWidth } from './vars';
 
 export const dynamicSize = (min, max) => {
   // Dynamic size based on device width
@@ -7,9 +7,9 @@ export const dynamicSize = (min, max) => {
     font-size: ${max}px;
     font-size: calc(
       ${min}px + ${max - min} *
-        ((100vw - ${minViewport}px) / ${maxViewport - minViewport})
+        ((100vw - ${minViewport}px) / ${maxContentWidth - minViewport})
     );
-    @media (min-width: ${maxViewport}px) {
+    @media (min-width: ${maxContentWidth}px) {
       font-size: ${max}px;
     }
   `;
