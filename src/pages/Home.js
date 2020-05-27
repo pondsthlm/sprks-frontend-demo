@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import Ipsum from 'components/Ipsum';
-import Image, { backgroundImageCss } from 'components/Image';
 import TextBlock from 'components/TextBlock';
 import { Section } from 'components/Layout';
 

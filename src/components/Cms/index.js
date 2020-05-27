@@ -6,7 +6,7 @@ import sanityClient from '@sanity/client';
 Get data from cms API and transform it into  initial state .json
 */
 export const clientSettings = {
-  projectId: 'rq3hxhhx',
+  projectId: 'ngyu15sc',
   dataset: 'production',
   token: null,
   useCdn: true,
@@ -21,12 +21,14 @@ export const client = sanityClient(clientSettings);
 const previewToken = undefined;
 
 const allQuery = `{
-  "cms": *[_id == "${previewToken !== undefined ? 'drafts.' : ''}webHead"][0]{
-    ...,
-    "pages": pages[]->,
+  "categories": *[_type == 'category']{
+    ...
+  },
+  "pages": *[_type == 'page']{
+    ...
   }
 }
-  ` // todo: change id to aboutUs when its created.
+  `; // todo: change id to aboutUs when its created.
 
 const loadCms = (cmsStatus, actions) => {
   if (!cmsStatus) {

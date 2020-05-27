@@ -9,7 +9,7 @@ import { useStore } from './store';
 import Cms from 'components/Cms';
 import Seo from 'components/Seo';
 import Page from 'pages/Page';
-import Menu from 'components/Menu';
+import Categories from 'pages/Categories';
 
 const GlobalStyle = createGlobalStyle`
   ${globalCSS}
@@ -33,12 +33,15 @@ function App() {
       <GlobalStyle />
       <Cms>Loading...</Cms>
       <Seo />
-      <Menu />
       <Router>
+        <Categories
+          path="/"
+          //page={pages.find(p => p.slug.current === 'categories')}
+        />
         {pages && (
           <Home
             default
-            path="/"
+            path="/home"
             page={pages.find(p => p.slug.current === '/')}
           />
         )}
