@@ -8,16 +8,19 @@ import A from 'components/A';
 const Wrapper = styled.div`
   position: relative;
 `;
+/*
 
+Magenta effekt.
+Topp: Färgplatta F00080 + effekt ”screen” 75 % opacitet på plattan.
+Mellan: Färplatta F00080 + effekt ”multiply” 40 % opacitet på plattan.
+Botten: Bild + effekt ”saturation” + 50 %.
+*/
 const effects = [
   css`
-    opacity: 0.75;
-    background-blend-mode: screen;
-    background-image: linear-gradient(
-      to bottom,
-      rgb(0, 180, 155),
-      rgb(0, 180, 155)
-    );
+    filter: saturate(150%);
+    background: rgba(240, 0, 128, 0.4) center center,
+      rgba(240, 0, 128, 0.74) center center;
+    background-blend-mode: multiply, screen;
   `,
   css`
     opacity: 0.75;
@@ -39,26 +42,26 @@ const effects = [
   `,
 ];
 
-const getEffect = index => effects[index % effects.length];
+const getEffect = index => effects[0]; //effects[index % effects.length];
 
 const CardStyle = styled.article`
   position: relative;
   height: 100vh;
   background-size: cover;
-  ${p => p.image && backgroundImageCss(p.image)}
+
   padding: 30px 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
   ::before {
+    ${p => p.image && backgroundImageCss(p.image)}
     content: '';
     position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
     right: 0;
-    bottom: 0;
-    opacity: 0.75;
+    top: 0;
+    width: 100%;
+    height: 100%;
     ${p => p.effect}
   }
 `;
