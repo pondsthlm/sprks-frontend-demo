@@ -86,32 +86,41 @@ const SanityImage = ({ src, alt, className, ratio }) => {
 };
 
 const defaultOptions = {
-  blur: false,
   width: 1200,
+  quality: 80,
+  format: 'jpg',
 };
 
-export const sanityBackgroundImageCss = (src, options) => {
+export const bgUrl = (sanityImage, options) => {
   const opt = { ...defaultOptions, options };
-  const sanityImage = src;
   if (!sanityImage) return null;
   const img = urlFor(sanityImage)
-    .format('jpg')
-    .quality(80);
+    .auto('format')
+    .quality(opt.quality);
+
+  const url = img.width(opt.width).url();
+  return url;
+};
+
+export const bgPosition = sanityImage => {
   const hasHotSpot =
     sanityImage.hotspot && sanityImage.hotspot.x && sanityImage.hotspot.y;
 
-  const url = opt.blur
-    ? img.width(opt.width * 0.1).url()
-    : img.width(opt.width).url();
+  const x = hasHotSpot ? `${sanityImage.hotspot.x * 100}%` : 'center';
+  const y = hasHotSpot ? `${sanityImage.hotspot.y * 100}%` : 'center';
+
+  return { x, y };
+};
+
+export const sanityBackgroundImageCss = (sanityImage, options) => {
+  const url = bgUrl(sanityImage, options);
+  const position = bgPosition(sanityImage);
+
   return css`
     background-image: url(${url});
     background-size: cover;
-    background-position-x: ${hasHotSpot
-      ? `${sanityImage.hotspot.x * 100}%`
-      : 'center'};
-    background-position-y: ${hasHotSpot
-      ? `${sanityImage.hotspot.y * 100}%`
-      : 'center'};
+    background-position-x: ${position.x};
+    background-position-y: ${position.y};
   `;
 };
 

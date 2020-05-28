@@ -1,0 +1,26 @@
+Grön effekt.
+Topp: Färgplatta 00B49B + effekt ”screen” 75 % opacitet på plattan.
+Mellan: Färplatta 00B49B + effekt ”multiply” 75 % opacitet på plattan.
+Botten: Bild + effekt ”saturation” + 50 %.
+
+Magenta effekt.
+Topp: Färgplatta F00080 + effekt ”screen” 75 % opacitet på plattan.
+Mellan: Färplatta F00080 + effekt ”multiply” 40 % opacitet på plattan.
+Botten: Bild + effekt ”saturation” + 50 %.
+
+Gul effekt.
+Topp: Färgplatta E1F000 + effekt ”screen” 75 % opacitet på plattan.
+Mellan: Färplatta E1F000 + effekt ”multiply” 30 % opacitet på plattan.
+Botten: Bild + effekt ”saturation” + 50 %.
+
+
+
+
+
+11:19
+Skickade en invite till dig på zeplin, 
+där ser man koden för den magentafärgade effekten. 
+
+- Multiply-lagret skiljer sig lite i opacitet mellan de olika färgerna, 
+
+- annars är de uppbyggda på samma sätt.
