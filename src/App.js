@@ -7,7 +7,6 @@ import Responsive from 'pages/Responsive';
 import { useStore } from './store';
 // lacy load page wait for api
 import Cms from 'components/Cms';
-import Seo from 'components/Seo';
 import Page from 'pages/Page';
 import Categories from 'pages/Categories';
 
@@ -32,7 +31,6 @@ function App() {
     <>
       <GlobalStyle />
       <Cms>Loading...</Cms>
-      <Seo />
       <Router>
         <Categories
           path="/"
