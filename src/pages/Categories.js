@@ -3,7 +3,7 @@ import React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { useStore } from 'store';
 import A from 'components/A';
-import BackgroundFilter from '../components/BackgroundFilter';
+import Background from 'components/Background';
 
 const Wrapper = styled.div`
   position: relative;
@@ -54,10 +54,10 @@ const CardAction = ({ title, content, href }) => {
 };
 
 const Card = ({ index, category }) => {
-  const { title, slug, images } = category;
+  const { title, slug, images, video } = category;
   return (
     <CardStyle>
-      <BackgroundFilter image={images[0]} filterNumber={index} />
+      <Background image={images[0]} filterNumber={index} video={video} />
       <CardAction
         title={title}
         content={['Imorgon 18:00', '+ 3 andra tillfällen']}
@@ -70,7 +70,6 @@ const Card = ({ index, category }) => {
 const Page = ({ page }) => {
   const { state } = useStore();
   const { categories } = state;
-  console.log('categories', categories);
 
   if (!categories) return null;
   return (

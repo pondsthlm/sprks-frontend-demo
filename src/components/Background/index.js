@@ -1,5 +1,5 @@
 import React from 'react';
-//import { useStore } from 'store';
+import { useStore } from 'store';
 import styled, { css } from 'styled-components/macro';
 import { bgUrl, bgPosition } from 'components/Image/SanityImage';
 
@@ -34,14 +34,48 @@ const effectCss = (image, filterNumber) => {
   `;
 };
 
-export default styled.div`
+const BgStyle = styled.div`
   ${fixed}
-
-  ::after {
-    ${fixed};
-  }
 
   ${p => effectCss(p.image, p.filterNumber)}
   background-size: cover;
   background-position: center center;
 `;
+
+const VideoStyl = styled.div`
+  ${fixed};
+
+  video {
+    transform: translate(-50%, 0);
+    margin-left: 50%;
+    height: 100%;
+    width: auto;
+  }
+`;
+export const BgVideo = ({ videoRef }) => {
+  const { state } = useStore();
+  const video = state.videos.find(v => v._id === videoRef._ref);
+  if (!video) return null;
+  console.log({ video });
+  return (
+    <VideoStyl>
+      <video muted autoPlay loop poster={bgUrl(video.image)}>
+        {video.sources &&
+          video.sources.map(source => (
+            <source
+              src={source.src}
+              key={source._key}
+              type={`video/${source.type}`}
+            />
+          ))}
+      </video>
+    </VideoStyl>
+  );
+};
+
+export default props => {
+  const { video } = props;
+  console.log(' { video }', { video });
+
+  return <BgStyle {...props}>{video && <BgVideo videoRef={video} />}</BgStyle>;
+};

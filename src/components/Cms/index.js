@@ -24,6 +24,9 @@ const allQuery = `{
   "categories": *[_type == 'category'] | order(order desc) {
     ...
   },
+  "videos": *[_type == 'video'] {
+    ...
+  },
   "pages": *[_type == 'page']{
     ...
   }
