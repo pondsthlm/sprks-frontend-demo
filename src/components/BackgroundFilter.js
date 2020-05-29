@@ -17,19 +17,20 @@ const fixed = css`
 
 const effectCss = (image, filterNumber) => {
   const filterList = [
-    { color: '240, 0, 128', opacity: '0.40' },
-    { color: '0, 180, 155', opacity: '0.75' },
-    { color: '225, 240, 0', opacity: '0.30' },
+    { color: '0,180,155', opacity: '0.3', saturation: '150%' },
+    { color: '240, 0, 128', opacity: '0.3', saturation: '120%' },
+    { color: '225, 240, 0', opacity: '0.3', saturation: '150%' },
   ];
   const filter = selectFilter(filterNumber, filterList);
   return css`
-    background: url(${bgUrl(image)}),
-      linear-gradient(
+    background: linear-gradient(
         rgba(${filter.color}, ${filter.opacity}),
         rgba(${filter.color}, ${filter.opacity})
       ),
-      linear-gradient(rgba(${filter.color}, 0.75), rgba(${filter.color}, 0.75));
+      linear-gradient(rgba(${filter.color}, 0.75), rgba(${filter.color}, 0.75)),
+      url(${bgUrl(image)});
     background-blend-mode: multiply, screen;
+    filter: saturate(${filter.saturation});
   `;
 };
 
@@ -38,8 +39,8 @@ export default styled.div`
 
   ::after {
     ${fixed};
-    backdrop-filter: saturate(150%);
   }
+
   ${p => effectCss(p.image, p.filterNumber)}
   background-size: cover;
   background-position: center center;
