@@ -56,7 +56,6 @@ export const BgVideo = ({ videoRef }) => {
   const { state } = useStore();
   const video = state.videos.find(v => v._id === videoRef._ref);
   if (!video) return null;
-  console.log({ video });
   return (
     <VideoStyl>
       <video muted autoPlay loop poster={bgUrl(video.image)}>

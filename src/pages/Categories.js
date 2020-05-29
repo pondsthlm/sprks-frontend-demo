@@ -5,12 +5,20 @@ import { useStore } from 'store';
 import A from 'components/A';
 import Background from 'components/Background';
 
-const Wrapper = styled.div`
+const ScrollSnapperWrapper = styled.div`
   position: relative;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  > article {
+    scroll-snap-align: start;
+  }
 `;
 
 const CardStyle = styled.article`
   position: relative;
+  overflow: hidden;
   height: 100vh;
 
   padding: 30px 16px;
@@ -26,6 +34,7 @@ const CardLink = styled(A)`
   text-decoration: none;
   color: #fff;
   padding: 24px;
+  z-index: 2;
   section {
     color: #fff;
   }
@@ -40,11 +49,13 @@ const CardLink = styled(A)`
     font-weight: 900;
     line-height: 1.5;
   }
+
+  ${p => p.fixedCard && 'position: fixed; width: 92%; bottom: 30px;'}
 `;
 
-const CardAction = ({ title, content, href }) => {
+const CardAction = ({ title, content, href, fixedCard }) => {
   return (
-    <CardLink href={href}>
+    <CardLink href={href} fixedCard={fixedCard}>
       <section>
         <h1>{title}</h1>
         {content && content.map((c, i) => <p key={`cl_${i}`}>{c}</p>)}
@@ -53,31 +64,32 @@ const CardAction = ({ title, content, href }) => {
   );
 };
 
-const Card = ({ index, category }) => {
+const Card = ({ index, category, fixedCard }) => {
   const { title, slug, images, video } = category;
   return (
     <CardStyle>
       <Background image={images[0]} filterNumber={index} video={video} />
       <CardAction
+        fixedCard={fixedCard}
         title={title}
-        content={['Imorgon 18:00', '+ 3 andra tillfällen']}
-        href={`/c/${slug}`}
+        content={['Imorgon 18:00', `+ 3 andra ${slug && slug.current}`]}
+        href={slug && slug.current}
       />
     </CardStyle>
   );
 };
 
-const Page = ({ page }) => {
+const Page = ({ page, fixedCard }) => {
   const { state } = useStore();
   const { categories } = state;
 
   if (!categories) return null;
   return (
-    <Wrapper>
+    <ScrollSnapperWrapper>
       {categories.map((c, i) => (
-        <Card index={i} key={c._id} category={c} />
+        <Card index={i} key={c._id} category={c} fixedCard={fixedCard} />
       ))}
-    </Wrapper>
+    </ScrollSnapperWrapper>
   );
 };
 

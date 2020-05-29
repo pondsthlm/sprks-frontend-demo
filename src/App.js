@@ -32,10 +32,8 @@ function App() {
       <GlobalStyle />
       <Cms>Loading...</Cms>
       <Router>
-        <Categories
-          path="/"
-          //page={pages.find(p => p.slug.current === 'categories')}
-        />
+        <Categories path="/" />
+        <Categories fixedCard="fixedCard" path="/fixedCard" />
         {pages && (
           <Home
             default
