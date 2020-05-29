@@ -21,7 +21,7 @@ export const client = sanityClient(clientSettings);
 const previewToken = undefined;
 
 const allQuery = `{
-  "categories": *[_type == 'category']{
+  "categories": *[_type == 'category'] | order(order asc) {
     ...
   },
   "pages": *[_type == 'page']{

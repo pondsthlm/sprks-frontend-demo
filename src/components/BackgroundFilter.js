@@ -3,34 +3,9 @@ import React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { bgUrl, bgPosition } from 'components/Image/SanityImage';
 
-const effects = [
-  css`
-    filter: saturate(150%);
-    background: rgba(240, 0, 128, 0.4) center center,
-      rgba(240, 0, 128, 0.74) center center;
-    background-blend-mode: multiply, screen;
-  `,
-  css`
-    opacity: 0.75;
-    background-blend-mode: screen;
-    background-image: linear-gradient(
-      to bottom,
-      rgb(240, 0, 128),
-      rgb(240, 0, 128)
-    );
-  `,
-  css`
-    opacity: 0.75;
-    background-blend-mode: screen;
-    background-image: linear-gradient(
-      to bottom,
-      rgb(225, 240, 0),
-      rgb(225, 240, 0)
-    );
-  `,
-];
+const selectFilter = (index, effectList) =>
+  effectList[index % effectList.length];
 
-const selectFilter = index => effects[index % effects.length];
 const fixed = css`
   content: '';
   position: absolute;
@@ -39,17 +14,33 @@ const fixed = css`
   width: 100%;
   height: 100%;
 `;
+
+const effectCss = (image, filterNumber) => {
+  const filterList = [
+    { color: '240, 0, 128', opacity: '0.40' },
+    { color: '0, 180, 155', opacity: '0.75' },
+    { color: '225, 240, 0', opacity: '0.30' },
+  ];
+  const filter = selectFilter(filterNumber, filterList);
+  return css`
+    background: url(${bgUrl(image)}),
+      linear-gradient(
+        rgba(${filter.color}, ${filter.opacity}),
+        rgba(${filter.color}, ${filter.opacity})
+      ),
+      linear-gradient(rgba(${filter.color}, 0.75), rgba(${filter.color}, 0.75));
+    background-blend-mode: multiply, screen;
+  `;
+};
+
 export default styled.div`
   ${fixed}
 
   ::after {
-    ${fixed}; // backdrop-filter: saturate(150%);
+    ${fixed};
+    backdrop-filter: saturate(150%);
   }
-  /*Magenta effekt.*/
-  background: url(${p => bgUrl(p.image)}),
-    linear-gradient(rgba(240, 0, 128, 0.4), rgba(240, 0, 128, 0.4)),
-    linear-gradient(rgba(240, 0, 128, 0.75), rgba(240, 0, 128, 0.75));
-  background-blend-mode: multiply, screen;
-
+  ${p => effectCss(p.image, p.filterNumber)}
   background-size: cover;
+  background-position: center center;
 `;

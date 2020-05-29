@@ -57,7 +57,7 @@ const Card = ({ index, category }) => {
   const { title, slug, images } = category;
   return (
     <CardStyle>
-      <BackgroundFilter image={images[0]} filter={index} />
+      <BackgroundFilter image={images[0]} filterNumber={index} />
       <CardAction
         title={title}
         content={['Imorgon 18:00', '+ 3 andra tillfällen']}
