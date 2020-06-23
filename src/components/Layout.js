@@ -27,6 +27,16 @@ export const Section = ({ children, className, image, color }) => {
   );
 };
 
+export const Card = styled.article`
+  position: relative;
+  height: 100vh;
+
+  padding: 30px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
+
 /*
 const PageExample = () => (
   <>
