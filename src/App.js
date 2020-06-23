@@ -8,6 +8,7 @@ import { useStore } from './store';
 // lacy load page wait for api
 import Cms from 'components/Cms';
 import Page from 'pages/Page';
+import Pic from 'pages/Pic';
 import FindOut from 'pages/FindOut';
 import Categories from 'pages/Categories';
 
@@ -34,6 +35,7 @@ function App() {
       <Cms>Loading...</Cms>
       <Router>
         <FindOut path="/" default />
+        <Pic path="/pic" />
         <FindOut path="/test" />
         <Categories
           path="/c"
