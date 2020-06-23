@@ -34,7 +34,10 @@ function App() {
       <GlobalStyle />
       <Cms>Loading...</Cms>
       <Router>
-        <FindOut path="/" default />
+        <start path="/" defualt>
+          <a href="/pic">picupload</a>
+          <a href="/test">Sparkstest</a>
+        </start>
         <Pic path="/pic" />
         <FindOut path="/test" />
         <Categories

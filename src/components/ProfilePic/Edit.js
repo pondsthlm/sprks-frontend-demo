@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import ExifOrientationImg from 'react-exif-orientation-img';
 
 import Avatar from 'react-avatar-edit';
 const Wrapper = styled.div`
@@ -55,7 +56,7 @@ class Edit extends React.Component {
         {this.state.preview && (
           <Preview>
             <span>Preview</span>
-            <img src={this.state.preview} alt="Preview" />
+            <ExifOrientationImg src={this.state.preview} alt="Preview" />
           </Preview>
         )}
       </Wrapper>
