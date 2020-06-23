@@ -8,6 +8,7 @@ import { useStore } from './store';
 // lacy load page wait for api
 import Cms from 'components/Cms';
 import Page from 'pages/Page';
+import FindOut from 'pages/FindOut';
 import Categories from 'pages/Categories';
 
 const GlobalStyle = createGlobalStyle`
@@ -32,17 +33,12 @@ function App() {
       <GlobalStyle />
       <Cms>Loading...</Cms>
       <Router>
-        <Categories path="/" />
-        <Categories fixedCard="fixedCard" path="/fixedCard" />
-        {pages && (
-          <Home
-            default
-            path="/home"
-            page={pages.find(p => p.slug.current === '/')}
-          />
-        )}
-        <Responsive path="/responsive" />
-        {pages && createPageRoutes(pages)}
+        <FindOut path="/" default />
+        <FindOut path="/test" />
+        <Categories
+          path="/c"
+          //page={pages.find(p => p.slug.current === 'categories')}
+        />
       </Router>
     </>
   );

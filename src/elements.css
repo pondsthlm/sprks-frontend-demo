@@ -15,10 +15,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: LabGrotesque, sans-serif;
-  
-  max-width: 500px;
+
+  max-width: 720px;
   margin: 0 auto;
-  max-height: 850px;
+  overflow-x: hidden;
 }
 /*Titles*/
 h1, h2, h3, h4, h5, h6 {
