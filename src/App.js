@@ -34,10 +34,11 @@ function App() {
       <GlobalStyle />
       <Cms>Loading...</Cms>
       <Router>
-        <Pic path="/pic" default />
-        <Test path="/test" />
+        <Pic path="pic" />
+        <Test path="test/*" />
         <Categories
-          path="/c"
+          path="c"
+          default
           //page={pages.find(p => p.slug.current === 'categories')}
         />
       </Router>

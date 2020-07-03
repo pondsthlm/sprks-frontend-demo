@@ -19,7 +19,7 @@ const ScrollSnapperWrapper = styled.div`
 const CardStyle = styled.article`
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: 80vh;
 
   padding: 30px 16px;
   display: flex;
@@ -64,7 +64,7 @@ const CardAction = ({ title, content, href, fixedCard }) => {
   );
 };
 
-const Card = ({ index, category, fixedCard }) => {
+const SnapCard = ({ index, category, fixedCard }) => {
   const { title, slug, images, video } = category;
   return (
     <CardStyle>
@@ -87,7 +87,7 @@ const Page = ({ page, fixedCard }) => {
   return (
     <ScrollSnapperWrapper>
       {categories.map((c, i) => (
-        <Card index={i} key={c._id} category={c} fixedCard={fixedCard} />
+        <SnapCard index={i} key={c._id} category={c} fixedCard={fixedCard} />
       ))}
     </ScrollSnapperWrapper>
   );

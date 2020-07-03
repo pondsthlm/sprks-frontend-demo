@@ -38,6 +38,14 @@ export const Card = styled.article`
   background: ${p => p.background || ''};
 `;
 
+export const Page = styled.article`
+  position: relative;
+  min-height: 100vh;
+
+  padding: 36px 24px;
+  background: ${p => p.background || ''};
+`;
+
 /*
 const PageExample = () => (
   <>

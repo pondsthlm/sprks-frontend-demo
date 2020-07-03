@@ -8,10 +8,12 @@ import { Router } from '@reach/router';
 import styled, { css } from 'styled-components/macro';
 import { useStore } from 'store';
 import A from 'components/A';
-import { Card } from 'components/Layout';
+import { Page } from 'components/Layout';
 import Button from 'components/Button';
 
-import Pressentation from 'components/PersonalityTest/Pressentation';
+import Pressentation, {
+  WaitForResult,
+} from 'components/PersonalityTest/Pressentation';
 import Result from 'components/PersonalityTest/Result';
 
 const questions = [
@@ -70,7 +72,7 @@ const questions = [
   {
     text: 'Jag gillar mest',
     altA: {
-      title: '...när det är lugn och ro.',
+      title: 'när det är lugn och ro.',
       res: [
         { caracter: 1, score: -1 }, //kaptenen
         { caracter: 2, score: 1 }, //fixaren
@@ -81,7 +83,7 @@ const questions = [
       ],
     },
     altB: {
-      title: '...när det är full fart.',
+      title: 'när det är full fart.',
       res: [
         { caracter: 1, score: -1 }, //kaptenen
         { caracter: 2, score: -1 }, //fixaren
@@ -122,7 +124,7 @@ const questions = [
   {
     text: 'Jag har',
     altA: {
-      title: 'bollkänsla',
+      title: 'bollkänsla.',
       res: [
         { caracter: 1, score: 1 }, //kaptenen
         { caracter: 2, score: -1 }, //fixaren
@@ -133,7 +135,7 @@ const questions = [
       ],
     },
     altB: {
-      title: 'inte så bra bollkänsla',
+      title: 'inte så bra bollkänsla.',
       res: [
         { caracter: 1, score: -1 }, //kaptenen
         { caracter: 2, score: 1 }, //fixaren
@@ -174,6 +176,7 @@ const questions = [
 
 const caracters = [
   {
+    url: 'captain',
     title: 'Name Of caracter?',
     text: 'A description of the caracter you are and what to do now',
     image: '',
@@ -194,23 +197,44 @@ const caracters = [
   'chameleon',
 ];
 
-const Wrapper = styled.div`
+const QuestionStyle = styled.div`
   position: relative;
+  h2 {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.11;
+    margin-bottom: 36px;
+  }
+  button {
+    margin: 0 0 36px 0;
+    padding: 0;
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.11;
+    color: #000;
+    background: none;
+    text-decoration: underline;
+    text-align: left;
+    outline: none;
+  }
 `;
 
 const Question = ({ index, question, addAnswer }) => {
   console.log(question);
   const { altA, altB, text } = question;
+  if (index > question.length)
+    return <WaitForResult resultUrl={`iam/${caracters[1].url}`} />;
+
   return (
-    <Card>
-      <p>{text}</p>
+    <QuestionStyle>
+      <h2>{text} ...</h2>
       <Button onClick={() => addAnswer('altA')}>{altA.title}</Button>
       <Button onClick={() => addAnswer('altB')}>{altB.title}</Button>
-    </Card>
+    </QuestionStyle>
   );
 };
 
-const Page = ({}) => {
+const TestPage = ({}) => {
   const [answers, setAnswers] = useState([]);
   const index = answers.length + 1 || 1;
   const currentQuestion = questions[index];
@@ -223,17 +247,19 @@ const Page = ({}) => {
   console.log({ answers, index, currentQuestion });
   // TODO: lägg url för svaret
   return (
-    <Router>
-      <Pressentation path="start" default />
-      <Question
-        path="test/questions"
-        index={index}
-        question={currentQuestion}
-        addAnswer={addAnswer}
-      />
-      <Result path="test/iam/:character" answers={answers} />
-    </Router>
+    <Page background="#f00080">
+      <Router>
+        <Pressentation path="start" default />
+        <Question
+          path="questions"
+          index={index}
+          question={currentQuestion}
+          addAnswer={addAnswer}
+        />
+        <Result path="iam/:character" answers={answers} />
+      </Router>
+    </Page>
   );
 };
 
-export default Page;
+export default TestPage;

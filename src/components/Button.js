@@ -14,10 +14,13 @@ const buttonCss = css`
   text-align: center;
   color: #ffffff;
 
-  margin: 36px 25px 0;
+  margin: 36px 0 25px 0;
   padding: 16px;
   text-decoration: none;
   background: #000;
+  width: 100%;
+  max-width: 350px;
+  display: ineline-block;
 `;
 
 export const Button = styled.button`
