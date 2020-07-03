@@ -221,10 +221,10 @@ const QuestionStyle = styled.div`
 
 const Question = ({ index, question, addAnswer }) => {
   console.log(question);
-  const { altA, altB, text } = question;
-  if (index > question.length)
-    return <WaitForResult resultUrl={`iam/${caracters[1].url}`} />;
 
+  if (!question) return <WaitForResult resultUrl={`iam/${caracters[1].url}`} />;
+
+  const { altA, altB, text } = question;
   return (
     <QuestionStyle>
       <h2>{text} ...</h2>
