@@ -4,21 +4,20 @@ import { Link } from '@reach/router';
 
 const buttonCss = css`
   border: none;
-  background: #000;
-  outline: none;
-  text-align: center;
-  color: #fff;
-  margin: 20px 0;
-  padding: 16px;
-
+  font-family: LabGrotesque;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.5;
   letter-spacing: normal;
   text-align: center;
+  color: #ffffff;
+
+  margin: 36px 25px 0;
+  padding: 16px;
   text-decoration: none;
+  background: #000;
 `;
 
 export const Button = styled.button`

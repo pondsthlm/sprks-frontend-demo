@@ -35,6 +35,7 @@ export const Card = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  background: ${p => p.background || ''};
 `;
 
 /*

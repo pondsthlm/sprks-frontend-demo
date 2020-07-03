@@ -9,7 +9,7 @@ import { useStore } from './store';
 import Cms from 'components/Cms';
 import Page from 'pages/Page';
 import Pic from 'pages/Pic';
-import FindOut from 'pages/FindOut';
+import Test from 'pages/Test';
 import Categories from 'pages/Categories';
 
 const GlobalStyle = createGlobalStyle`
@@ -34,12 +34,8 @@ function App() {
       <GlobalStyle />
       <Cms>Loading...</Cms>
       <Router>
-        <start path="/" defualt>
-          <a href="/pic">picupload</a>
-          <a href="/test">Sparkstest</a>
-        </start>
-        <Pic path="/pic" />
-        <FindOut path="/test" />
+        <Pic path="/pic" default />
+        <Test path="/test" />
         <Categories
           path="/c"
           //page={pages.find(p => p.slug.current === 'categories')}

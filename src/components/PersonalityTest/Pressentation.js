@@ -4,7 +4,7 @@ import { Card } from 'components/Layout';
 import { LinkButton, Button } from 'components/Button';
 
 const Pressentation = () => (
-  <Card>
+  <Card background="#f00080">
     <h1>Vilken personlighet är du?</h1>
     <p>
       I det här personlighetstestet kommer du få svara på tio frågor om dig
