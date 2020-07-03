@@ -22,12 +22,6 @@ const childAnimations = createChildAnimationCSS();
 
 const AnimationStyle = styled.div`
   text-align: center;
-  bottom: 80px;
-  position: fixed;
-  margin: 0 auto;
-  width: 100%;
-  left: 0;
-
   span {
     width: 12px;
     height: 12px;

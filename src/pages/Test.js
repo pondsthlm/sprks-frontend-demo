@@ -198,9 +198,7 @@ const caracters = [
 ];
 
 const SplitCotnent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // https://css-tricks.com/couple-takes-sticky-footer/
 `;
 
 const QuestionStyle = styled.div`
