@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 import { Router } from '@reach/router';
 //import { useStore } from 'store';
 import styled, { css } from 'styled-components/macro';
-import { useStore } from 'store';
 import A from 'components/A';
 import { Page } from 'components/Layout';
 import Button from 'components/Button';
@@ -15,6 +14,7 @@ import Pressentation, {
   WaitForResult,
 } from 'components/PersonalityTest/Pressentation';
 import Result from 'components/PersonalityTest/Result';
+import Progress from 'components/PersonalityTest/Progress';
 
 const questions = [
   {
@@ -197,6 +197,12 @@ const caracters = [
   'chameleon',
 ];
 
+const SplitCotnent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 const QuestionStyle = styled.div`
   position: relative;
   h2 {
@@ -248,16 +254,19 @@ const TestPage = ({}) => {
   // TODO: lägg url för svaret
   return (
     <Page background="#f00080">
-      <Router>
-        <Pressentation path="start" default />
-        <Question
-          path="questions"
-          index={index}
-          question={currentQuestion}
-          addAnswer={addAnswer}
-        />
-        <Result path="iam/:character" answers={answers} />
-      </Router>
+      <SplitCotnent>
+        <Router>
+          <Pressentation path="start" default />
+          <Question
+            path="questions"
+            index={index}
+            question={currentQuestion}
+            addAnswer={addAnswer}
+          />
+          <Result path="iam/:character" answers={answers} />
+        </Router>
+        <Progress index={index} />
+      </SplitCotnent>
     </Page>
   );
 };

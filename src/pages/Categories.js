@@ -7,7 +7,7 @@ import Background from 'components/Background';
 
 const ScrollSnapperWrapper = styled.div`
   position: relative;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;

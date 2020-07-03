@@ -42,7 +42,7 @@ export const Page = styled.article`
   position: relative;
   min-height: 100vh;
 
-  padding: 36px 24px;
+  padding: 36px 24px 0;
   background: ${p => p.background || ''};
 `;
 
