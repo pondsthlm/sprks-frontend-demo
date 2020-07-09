@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate } from '@reach/router';
-import styled, { css } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
-import { Page } from 'components/Layout';
-import { LinkButton, Button } from 'components/Button';
+import { LinkButton } from 'components/Button';
 
 import results from './results.json';
 import Progress from './Progress';
