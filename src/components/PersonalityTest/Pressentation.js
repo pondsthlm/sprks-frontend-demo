@@ -46,8 +46,8 @@ export const WaitForResult = ({ resultUrl }) => {
         Kom ihåg att det här testet bara en indikation! Du vet bäst vem du är
         och borde såklart prova vilken aktivitet du vill.
       </p>
-      {wait && <Progress index={10} animate />}
       {!wait && <LinkButton to={resultUrl}>Se ditt resultat</LinkButton>}
+      <Progress index={10} animate={wait} />
     </Text>
   );
 };
