@@ -5,16 +5,15 @@ Sparks personality test reverse engineered
 import React, { useState } from 'react';
 import { Router } from '@reach/router';
 //import { useStore } from 'store';
-import styled, { css } from 'styled-components/macro';
-import A from 'components/A';
+import styled from 'styled-components/macro';
 import { Page } from 'components/Layout';
-import Button from 'components/Button';
 
-import Pressentation, {
-  WaitForResult,
+import {
+  Pressentation,
+  Result,
 } from 'components/PersonalityTest/Pressentation';
-import Result from 'components/PersonalityTest/Result';
-import Progress from 'components/PersonalityTest/Progress';
+
+import Questions from 'components/PersonalityTest/Questions';
 
 const questions = [
   {
@@ -197,48 +196,7 @@ const caracters = [
   'chameleon',
 ];
 
-const SplitCotnent = styled.div`
-  // https://css-tricks.com/couple-takes-sticky-footer/
-`;
-
-const QuestionStyle = styled.div`
-  position: relative;
-  h2 {
-    font-size: 54px;
-    font-weight: 900;
-    line-height: 1.11;
-    margin-bottom: 36px;
-  }
-  button {
-    margin: 0 0 36px 0;
-    padding: 0;
-    font-size: 54px;
-    font-weight: 900;
-    line-height: 1.11;
-    color: #000;
-    background: none;
-    text-decoration: underline;
-    text-align: left;
-    outline: none;
-  }
-`;
-
-const Question = ({ index, question, addAnswer }) => {
-  console.log(question);
-
-  if (!question) return <WaitForResult resultUrl={`iam/${caracters[1].url}`} />;
-
-  const { altA, altB, text } = question;
-  return (
-    <QuestionStyle>
-      <h2>{text} ...</h2>
-      <Button onClick={() => addAnswer('altA')}>{altA.title}</Button>
-      <Button onClick={() => addAnswer('altB')}>{altB.title}</Button>
-    </QuestionStyle>
-  );
-};
-
-const TestPage = ({}) => {
+const TestPage = () => {
   const [answers, setAnswers] = useState([]);
   const index = answers.length + 1 || 1;
   const currentQuestion = questions[index];
@@ -252,19 +210,17 @@ const TestPage = ({}) => {
   // TODO: lägg url för svaret
   return (
     <Page background="#f00080">
-      <SplitCotnent>
-        <Router>
-          <Pressentation path="start" default />
-          <Question
-            path="questions"
-            index={index}
-            question={currentQuestion}
-            addAnswer={addAnswer}
-          />
-          <Result path="iam/:character" answers={answers} />
-        </Router>
-        <Progress index={index} />
-      </SplitCotnent>
+      <Router>
+        <Pressentation path="start" default />
+        <Questions
+          path="questions"
+          index={index}
+          question={currentQuestion}
+          addAnswer={addAnswer}
+        />
+
+        <Result path="iam/:character" answers={answers} />
+      </Router>
     </Page>
   );
 };

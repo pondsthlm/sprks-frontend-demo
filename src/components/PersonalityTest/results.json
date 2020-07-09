@@ -1,5 +1,13 @@
 {
     "captain":{
-        "title":"Kaptenen"
+        "url": "captain",
+        "title":"Kaptenen",
+        "text":"Det ska vara mycket folk och mycket fart – där kan du briljera.\n\nJu mer press det är på dig, desto mer kan bevisa att du faktiskt är den du är. Är det dags för en aktivitet ger du alltid allt och har inga problem med att vara i fokus. Det finns i din själ och kommer förmodligen alltid vara.",
+        "image": ""
+    },
+    "thefixer":{
+        "title":"Fixaren",
+        "text":"",
+        "image": ""
     }
 }

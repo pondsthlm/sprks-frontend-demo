@@ -14,7 +14,7 @@ const buttonCss = css`
   text-align: center;
   color: #ffffff;
 
-  margin: 36px 0 25px 0;
+  margin: 36px auto 25px;
   padding: 16px;
   text-decoration: none;
   background: #000;
