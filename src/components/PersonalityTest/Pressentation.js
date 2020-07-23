@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 import { LinkButton } from 'components/Button';
 
 import Progress from './Progress';
-import { caracters } from './data';
+import { caracters } from './data_en';
 
 const Text = styled.div`
   white-space: pre-line;

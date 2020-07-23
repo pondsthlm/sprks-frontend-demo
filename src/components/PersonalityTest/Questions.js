@@ -6,7 +6,7 @@ import Button from 'components/Button';
 import { WaitForResult } from './Pressentation';
 import Progress from 'components/PersonalityTest/Progress';
 
-import { caracters, questions } from './data';
+import { caracters, questions } from './data_en';
 
 const QuestionStyle = styled.div`
   position: relative;
