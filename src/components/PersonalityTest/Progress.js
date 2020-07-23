@@ -64,7 +64,7 @@ const Progress = ({ index, animate }) => {
   let dots = [];
   for (let i = 1; i <= 10; i++) {
     const isFilled = i <= index ? 'filled' : ''; // add other opacity to all for dots marking pgrogress has passed
-    dots.push(<span className={`${isFilled}`} />);
+    dots.push(<span className={`${isFilled}`} key={i} />);
   }
   return <AnimationStyle animate={animate}>{dots}</AnimationStyle>;
 };

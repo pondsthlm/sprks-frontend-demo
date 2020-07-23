@@ -3,8 +3,8 @@ import styled from 'styled-components/macro';
 
 import { LinkButton } from 'components/Button';
 
-import results from './results.json';
 import Progress from './Progress';
+import { caracters } from './data';
 
 const Text = styled.div`
   white-space: pre-line;
@@ -69,7 +69,9 @@ export const Pressentation = () => (
 
 export const Result = props => {
   console.log({ props });
-  const { image, title, text } = results[props.character];
+  //props.character = caracter name part of url
+  const result = caracters.find(c => c.url === props.character);
+  const { image, title, text } = result;
   return (
     <Text>
       <h1>{title}</h1>
